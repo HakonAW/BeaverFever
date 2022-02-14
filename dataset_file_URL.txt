@@ -1,0 +1,17 @@
+***CSV
+https://www.eea.europa.eu/data-and-maps/data/natura-12/natura-2000-tabular-data-12-tables/natura-2000-comma-separated-values-files/at_download/file
+https://www.eea.europa.eu/data-and-maps/data/natura-11/natura-2000-tabular-data-12-tables/natura-2000-comma-separated-values-files/at_download/file
+https://www.eea.europa.eu/data-and-maps/data/natura-10/natura-2000-tabular-data-12-tables/natura-2000-comma-separated-values-files/at_download/file
+https://www.eea.europa.eu/data-and-maps/data/natura-9/natura-2000-tabular-data-12-tables/natura-2000-comma-separated-values-files/at_download/file
+https://www.eea.europa.eu/data-and-maps/data/natura-8/natura-2000-tabular-data-12-tables/natura-2000-comma-separated-values-files/at_download/file
+https://www.eea.europa.eu/data-and-maps/data/natura-7/natura-2000-tabular-data-12-tables/natura-2000-comma-separated-values-files/at_download/file
+https://www.eea.europa.eu/data-and-maps/data/natura-6/natura-2000-tabular-data-12-tables/natura-2000-comma-separated-values-files/at_download/file
+https://www.eea.europa.eu/data-and-maps/data/natura-5/natura-2000-tabular-data-12-tables/natura-2000-comma-separated-values-files/at_download/file
+https://www.eea.europa.eu/data-and-maps/data/natura-4/natura-2000-tabular-data-12-tables/natura-2000-comma-separated-values-files/at_download/file
+https://www.eea.europa.eu/data-and-maps/data/natura-3/natura-2000-tabular-data-12-tables/natura-2000-comma-separated-values-files/at_download/file
+https://www.eea.europa.eu/data-and-maps/data/natura-2/natura-2000-tabular-data-12-tables/natura-2000-comma-separated-values-files/at_download/file
+***ACCESS
+https://www.eea.europa.eu/data-and-maps/data/natura-1/natura-2000-public-microsoft-access-database-10-tables/microsoft-access-format-zip/at_download/file
+https://www.eea.europa.eu/data-and-maps/data/natura/natura-2000-public-microsoft-access-database-10-tables/microsoft-access-format-zip/at_download/file
+https://www.eea.europa.eu/data-and-maps/data/natura-2000/natura-2000-public-microsoft-access-database-10-tables/microsoft-access-format-zip/at_download/file
+https://www.eea.europa.eu/data-and-maps/data/natura-2000-eunis-database/natura-2000-eunis-database/natura-2000-eunis-database/at_download/file
