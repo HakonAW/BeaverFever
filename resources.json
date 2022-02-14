@@ -8,15 +8,13 @@
         "location": {
             "type": "string"
         },
-        "adminUser": {
+        "sqlAdministratorLogin": {
             "type": "string"
 
         },
-        "adminPwd": {
-            "type": "string",
-            "metadata": {
-                "description": "description"
-            }
+        "sqlAdministratorLoginPassword": {
+            "type": "secureString"
+        
         },
         "tags": {
             "type": "object",
@@ -29,24 +27,30 @@
 
 
         {
-            "name": "tempStorage",
-            "type": "Microsoft.DataLakeStore/accounts",
-            "apiVersion": "2016-11-01",
+            "name": "beacerstorageacc",
+            "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "2019-04-01",
             "location": "[parameters('location')]",
+            "kind": "StorageV2",
             "properties": {
                 "newTier": "Consumption",
                 "encryptionState": "Enabled"
+            },
+            "sku": {
+                "name": "Standard_RAGRS",
+                "tier": "Standard"
             }
-        },
+    },
+        
 
         {
-            "name": "SpeciesDB",
+            "name": "species-db",
             "type": "Microsoft.DBforMySQL/servers",
             "apiVersion": "2017-12-01",
             "location": "[parameters('location')]",
             "properties": {
-                "administratorLogin": "[parameters('adminUser')]",
-                "administratorLoginPassword": "[parameters('adminPwd')]",
+                "administratorLogin": "[parameters('sqlAdministratorLogin')]",
+                "administratorLoginPassword": "[parameters('sqlAdministratorLoginPassword')]",
                 "createMode": "Default"
             }
         }

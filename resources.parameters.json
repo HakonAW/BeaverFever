@@ -3,16 +3,16 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "name": {
-            "value": "BeverDigital"
+            "value": "BeaverDigital"
         },
         "location": {
             "value": "northeurope"
         },
-        "adminUser": {
-            "value": "Castor Fiber" 
+        "sqlAdministratorLogin": {
+            "value": "CastorFiber" 
         },
-        "adminPwd": 
-            {"value": "BeverFever"},
+        "sqlAdministratorLoginPassword": 
+            {"value": "BeaverFever!"},
         "tags": {
             "value": {}
         }
