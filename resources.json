@@ -1,0 +1,52 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "rgName": {
+            "type": "string"
+        },
+        "rgLocation": {
+            "type": "string"
+        },
+        "tags": {
+            "type": "object",
+            "defaultValue": {}
+        }
+    },
+    "functions": [],
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Resources/resourceGroups",
+            "apiVersion": "2018-05-01",
+            "location": "[parameters('rgLocation')]",
+            "name": "[parameters('rgName')]",
+            "properties": {},
+            "tags": "[parameters('tags')]"
+        },
+
+        {
+            "name": "tempStorage",
+            "type": "Microsoft.DataLakeStore/accounts",
+            "apiVersion": "2016-11-01",
+            "location": "[resourceGroup().location]",
+            "properties": {
+                "newTier": "Consumption",
+                "encryptionState": "Enabled"
+            }
+        },
+
+        {
+            "name": "SpeciesDB",
+            "type": "Microsoft.DBforMySQL/servers",
+            "apiVersion": "2017-12-01",
+            "location": "[resourceGroup().location]",
+            "properties": {
+                "administratorLogin": "Castor Fiber",
+                "administratorLoginPassword": "BeverFever",
+                "createMode": "Default"
+            }
+        }
+    ],
+    "outputs": {}
+}
