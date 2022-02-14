@@ -8,6 +8,11 @@
         "rgLocation": {
             "value": "northeurope"
         },
+        "adminUser": {
+            "value": "Castor Fiber" 
+        },
+        "adminPwd": 
+            {"value": "BeverFever"},
         "tags": {
             "value": {}
         }
