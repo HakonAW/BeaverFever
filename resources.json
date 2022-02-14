@@ -2,10 +2,10 @@
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "rgName": {
+        "name": {
             "type": "string"
         },
-        "rgLocation": {
+        "location": {
             "type": "string"
         },
         "adminUser": {
@@ -32,7 +32,7 @@
             "name": "tempStorage",
             "type": "Microsoft.DataLakeStore/accounts",
             "apiVersion": "2016-11-01",
-            "location": "[parameters('rgLocation')]",
+            "location": "[parameters('location')]",
             "properties": {
                 "newTier": "Consumption",
                 "encryptionState": "Enabled"
@@ -43,13 +43,15 @@
             "name": "SpeciesDB",
             "type": "Microsoft.DBforMySQL/servers",
             "apiVersion": "2017-12-01",
-            "location": "[parameters('rgLocation')]",
+            "location": "[parameters('location')]",
             "properties": {
                 "administratorLogin": "[parameters('adminUser')]",
                 "administratorLoginPassword": "[parameters('adminPwd')]",
                 "createMode": "Default"
             }
         }
+        
+        
     ],
     "outputs": {}
 }
