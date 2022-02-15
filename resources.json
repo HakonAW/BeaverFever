@@ -27,7 +27,7 @@
 
 
         {
-            "name": "beacerstorageacc",
+            "name": "beaverstorageacc",
             "type": "Microsoft.Storage/storageAccounts",
             "apiVersion": "2019-04-01",
             "location": "[parameters('location')]",
