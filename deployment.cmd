@@ -1,0 +1,1 @@
+az deployment group create --name BeaverDigital1 -f .\resources.json -p .\resources.parameters.json -g BeaverDigitalde

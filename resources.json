@@ -1,0 +1,61 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "name": {
+            "type": "string"
+        },
+        "location": {
+            "type": "string"
+        },
+        "sqlAdministratorLogin": {
+            "type": "string"
+
+        },
+        "sqlAdministratorLoginPassword": {
+            "type": "secureString"
+        
+        },
+        "tags": {
+            "type": "object",
+            "defaultValue": {}
+        }
+    },
+    "functions": [],
+    "variables": {},
+    "resources": [
+
+
+        {
+            "name": "beacerstorageacc",
+            "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "2019-04-01",
+            "location": "[parameters('location')]",
+            "kind": "StorageV2",
+            "properties": {
+                "newTier": "Consumption",
+                "encryptionState": "Enabled"
+            },
+            "sku": {
+                "name": "Standard_RAGRS",
+                "tier": "Standard"
+            }
+    },
+        
+
+        {
+            "name": "species-db",
+            "type": "Microsoft.DBforMySQL/servers",
+            "apiVersion": "2017-12-01",
+            "location": "[parameters('location')]",
+            "properties": {
+                "administratorLogin": "[parameters('sqlAdministratorLogin')]",
+                "administratorLoginPassword": "[parameters('sqlAdministratorLoginPassword')]",
+                "createMode": "Default"
+            }
+        }
+        
+        
+    ],
+    "outputs": {}
+}
