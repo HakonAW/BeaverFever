@@ -2,11 +2,18 @@
   "scriptFile": "__init__.py",
   "bindings": [
     {
-      "name": "myblob",
+      "name": "inputBlob",
       "type": "blobTrigger",
       "direction": "in",
-      "path": "data",
+      "path": "beaverupload/data/{inName}",
       "connection": "AzureWebJobsStorage"
+    },
+    {
+      "name": "outputBlob",
+      "direction": "out",
+      "path": "beaverupload/copy/{outName}",
+      "connection": "AzureWebJobsStorage",
+      "dataType": "string"
     }
   ]
 }
