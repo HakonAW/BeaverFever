@@ -1,0 +1,145 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "vulnerabilityAssessments_Default_storageContainerPath": {
+            "type": "SecureString"
+        },
+        "workspaces_beaverpipeline_name": {
+            "defaultValue": "beaverpipeline",
+            "type": "String"
+        },
+        "storageAccounts_beaverstorageacc_externalid": {
+            "defaultValue": "/subscriptions/91044c7a-8004-4714-b988-7fbea63b1f14/resourceGroups/Beaverfeber/providers/Microsoft.Storage/storageAccounts/beaverstorageacc",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Synapse/workspaces",
+            "apiVersion": "2021-06-01",
+            "name": "[parameters('workspaces_beaverpipeline_name')]",
+            "location": "northeurope",
+            "identity": {
+                "type": "SystemAssigned"
+            },
+            "properties": {
+                "defaultDataLakeStorage": {
+                    "resourceId": "[parameters('storageAccounts_beaverstorageacc_externalid')]",
+                    "accountUrl": "https://beaverstorageacc.dfs.core.windows.net",
+                    "filesystem": "beaverfever"
+                },
+                "encryption": {},
+                "connectivityEndpoints": {
+                    "web": "[concat('https://web.azuresynapse.net?workspace=%2fsubscriptions%2f91044c7a-8004-4714-b988-7fbea63b1f14%2fresourceGroups%2fBeaverfeber%2fproviders%2fMicrosoft.Synapse%2fworkspaces%2f', parameters('workspaces_beaverpipeline_name'))]",
+                    "dev": "[concat('https://', parameters('workspaces_beaverpipeline_name'), '.dev.azuresynapse.net')]",
+                    "sqlOnDemand": "[concat(parameters('workspaces_beaverpipeline_name'), '-ondemand.sql.azuresynapse.net')]",
+                    "sql": "[concat(parameters('workspaces_beaverpipeline_name'), '.sql.azuresynapse.net')]"
+                },
+                "managedResourceGroupName": "synapseworkspace-managedrg-05b7350c-a0a9-4c3c-a404-12bae95b8377",
+                "sqlAdministratorLogin": "beaveradmin",
+                "privateEndpointConnections": [],
+                "publicNetworkAccess": "Enabled",
+                "cspWorkspaceAdminProperties": {
+                    "initialWorkspaceAdminObjectId": "ba37a41a-e35c-4043-9e3e-ec9ec761d713"
+                },
+                "trustedServiceBypassEnabled": false
+            }
+        },
+        {
+            "type": "Microsoft.Synapse/workspaces/auditingSettings",
+            "apiVersion": "2021-06-01",
+            "name": "[concat(parameters('workspaces_beaverpipeline_name'), '/Default')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Synapse/workspaces', parameters('workspaces_beaverpipeline_name'))]"
+            ],
+            "properties": {
+                "retentionDays": 0,
+                "auditActionsAndGroups": [],
+                "isStorageSecondaryKeyInUse": false,
+                "isAzureMonitorTargetEnabled": false,
+                "state": "Disabled",
+                "storageAccountSubscriptionId": "00000000-0000-0000-0000-000000000000"
+            }
+        },
+        {
+            "type": "Microsoft.Synapse/workspaces/extendedAuditingSettings",
+            "apiVersion": "2021-06-01",
+            "name": "[concat(parameters('workspaces_beaverpipeline_name'), '/Default')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Synapse/workspaces', parameters('workspaces_beaverpipeline_name'))]"
+            ],
+            "properties": {
+                "retentionDays": 0,
+                "auditActionsAndGroups": [],
+                "isStorageSecondaryKeyInUse": false,
+                "isAzureMonitorTargetEnabled": false,
+                "state": "Disabled",
+                "storageAccountSubscriptionId": "00000000-0000-0000-0000-000000000000"
+            }
+        },
+        {
+            "type": "Microsoft.Synapse/workspaces/firewallRules",
+            "apiVersion": "2021-06-01",
+            "name": "[concat(parameters('workspaces_beaverpipeline_name'), '/allowAll')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Synapse/workspaces', parameters('workspaces_beaverpipeline_name'))]"
+            ],
+            "properties": {
+                "startIpAddress": "0.0.0.0",
+                "endIpAddress": "255.255.255.255"
+            }
+        },
+        {
+            "type": "Microsoft.Synapse/workspaces/integrationruntimes",
+            "apiVersion": "2021-06-01",
+            "name": "[concat(parameters('workspaces_beaverpipeline_name'), '/AutoResolveIntegrationRuntime')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Synapse/workspaces', parameters('workspaces_beaverpipeline_name'))]"
+            ],
+            "properties": {
+                "type": "Managed",
+                "typeProperties": {
+                    "computeProperties": {
+                        "location": "AutoResolve"
+                    }
+                }
+            }
+        },
+        {
+            "type": "Microsoft.Synapse/workspaces/securityAlertPolicies",
+            "apiVersion": "2021-06-01",
+            "name": "[concat(parameters('workspaces_beaverpipeline_name'), '/Default')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Synapse/workspaces', parameters('workspaces_beaverpipeline_name'))]"
+            ],
+            "properties": {
+                "state": "Disabled",
+                "disabledAlerts": [
+                    ""
+                ],
+                "emailAddresses": [
+                    ""
+                ],
+                "emailAccountAdmins": false,
+                "retentionDays": 0
+            }
+        },
+        {
+            "type": "Microsoft.Synapse/workspaces/vulnerabilityAssessments",
+            "apiVersion": "2021-06-01",
+            "name": "[concat(parameters('workspaces_beaverpipeline_name'), '/Default')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Synapse/workspaces', parameters('workspaces_beaverpipeline_name'))]"
+            ],
+            "properties": {
+                "recurringScans": {
+                    "isEnabled": false,
+                    "emailSubscriptionAdmins": true
+                },
+                "storageContainerPath": "[parameters('vulnerabilityAssessments_Default_storageContainerPath')]"
+            }
+        }
+    ]
+}
