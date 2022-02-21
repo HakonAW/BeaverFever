@@ -1,0 +1,16 @@
+Create table FactSpecies (
+[ObservationID]             int identity PRIMARY key,
+ [Site_Code]                 varchar(10) ,
+ [SpecieId]                  int  ,
+ [YearMonth]                 int  ,
+ [LOWERBOUND]                int  ,
+ [UPPERBOUND]                int ,
+ [Change_in_Conservation]    nvarchar(50)  ,
+ [Change_in_Intro_candidate] nvarchar(50)  ,
+ [Change_in_Global]          nvarchar(50) ,
+ [CountingType]              char(10) ,
+ [Dataquality]               char(1) ,
+ [PopulationType]            char(1) ,
+ [AboundanceCategory]        char(1) ,
+ [Conservation]              char(1),
+ [Global]                    char(1))
