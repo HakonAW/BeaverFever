@@ -1,7 +1,7 @@
 Create schema Staging
 	Create table FactSpecies (
 	[ObservationID]             int identity primary key ,
-	[Site_Code]                 varchar(10) ,
+	[SiteCode]                 varchar(10) ,
 	[SpecieId]                  int  ,
 	[YearMonth]                 int  ,
 	[LOWERBOUND]                int  ,
